@@ -10,3 +10,17 @@ def ROC_Curve(fpr, tpr, roc_auc):
     plt.ylabel('True Positive Rate')
     plt.xlabel('False Positive Rate')
     plt.show()
+ 
+def import_basic_libraries():
+    import pandas as pd
+    import numpy as np
+    import matplotlib.pyplot as plt
+    import seaborn as sns
+    import plotly as ply
+    import missingno
+    import os
+    from sklearn.metrics import accuracy_score, r2_score, mean_absolute_error, mean_squared_error
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.linear_model import LinearRegression
+    from sklearn.model_selection import train_test_split
+    import sklearn
