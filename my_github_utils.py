@@ -26,8 +26,8 @@ def find_null_per(app_train_df):
         if str_.find(".") != -1:
             str_1 = str(te[0]).split('\n')[i].split(".")[0]
             str_2 = str(te[0]).split('\n')[i].split(".")[1]
-            col_names.append(str_1[:-2].replace(" ", ""))
-            per_.append(".".join([str_1[-2:], str_2]))
+            col_names.append(str_1[:-3].replace(" ", ""))
+            per_.append(".".join([str_1[-3:], str_2]))
     return pd.DataFrame({        
         "Null Col Names": col_names,
         "Null Percentage": per_
