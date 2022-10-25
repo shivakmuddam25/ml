@@ -28,10 +28,10 @@ def find_null_per(app_train_df):
             str_2 = str(te[0]).split('\n')[i].split(".")[1]
             col_names.append(str_1[:-2].replace(" ", ""))
             per_.append(".".join([str_1[-2:], str_2]))
-    return pd.DataFrame({
-    "Null Col Names": cols,
-    "Null Percentage": per
-    })
+    return pd.DataFrame({        
+        "Null Col Names": cols,
+        "Null Percentage": per
+        })
  
 def import_basic_libraries():
     import pandas as pd
