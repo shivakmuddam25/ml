@@ -12,6 +12,8 @@ def ROC_Curve(fpr, tpr, roc_auc):
     plt.show()
 
 def find_null_per(app_train_df):
+    import numpy as np
+    import pandas as pd
     te = pd.DataFrame(np.round(app_train_df.isnull().sum().sort_values(ascending=False)
                       /app_train_df.shape[0]*100, 2))
     te = te[te > 0]
