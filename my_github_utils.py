@@ -29,8 +29,8 @@ def find_null_per(app_train_df):
             col_names.append(str_1[:-2].replace(" ", ""))
             per_.append(".".join([str_1[-2:], str_2]))
     return pd.DataFrame({        
-        "Null Col Names": cols,
-        "Null Percentage": per
+        "Null Col Names": col_names,
+        "Null Percentage": per_
         })
  
 def import_basic_libraries():
