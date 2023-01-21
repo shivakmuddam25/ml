@@ -1,0 +1,66 @@
+EC2 for Mac:
+
+
+Launch EC2 from amazon  -  (Free tier for personal use)
+*Get the key pair file download 
+
+Open Terminal:
+1)sudo chown 400 ec2-kp100.cer
+2)ssh -i ec2-kp100.cer ec2-user@43-204-28-174
+
+OR 
+
+ssh -i ec2-kp100.cer ec2-user@ec2-65-2-171-223.ap-south-1.compute.amazonaws.com
+
+3)sudo passwd ec2-user
+
+
+Once connected to the ec2 instance:
+Check files/dirs: ll -lart
+
+
+Run this command in local to send the files(file = local directory)
+scp -r -i ec2-kp100.cer file_dir ec2-user@ec2-43-204-28-174.ap-south-1.compute.amazonaws.com:~/.
+
+Single file:
+scp -i ec2-kp100.cer file/app1.py ec2-user@ec2-43-204-28-174.ap-south-1.compute.amazonaws.com:~/.
+
+Run API URL file , and then the UI URL.
+Apply tumx, to keep the session alive
+-stop the previous session in the terminal
+-run commands for tumx like below
+TUMX Commands:
+sudo yum install tmux
+tmux new -s StreamSession
+ uvicorn main_api:app /streamlit run app.py
+Press Ctrl+B and then D
+
+OR 
+In EC2 terminal
+nohup python3 -m streamlit run app.py
+
+ec2>ps -ef    (it list all running processes)
+ec2> kill p_id 
+
+Pip install -r requirements.txt
+Python app.py — to run the application on the ec2
+
+ec2>sudo apt-get update && sudo apt-get python3-pip
+
+Implement docker so that container will have all the dependencies installed on any platform…and run the app with ease.
+https://levelup.gitconnected.com/deploy-a-dockerized-fastapi-application-to-aws-cc757830ba1b
+
+
+
+
+Python -m unicorn main_api:app
+——————————————————
+
+Note: In case any permission denied: please follow below steps(https://phoenixnap.com/kb/ssh-permission-denied-publickey)
+
+2.1)sudo nano /etc/ssh/sshd_config
+Password Authentication yes
+ChallengeResponseAuthentication no
+
+sudo systemctl restart sshd (Ignore if doesn’t work)
+sudo launchctl load -w /System/Library/LaunchDaemons/ssh.plist
